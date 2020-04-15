@@ -119,4 +119,25 @@ public interface TwitchKraken {
     	@Param("logins") List<String> logins
     );
 
+    /**
+     * Update title
+     * <p>
+     * Updates the title of a specified channel.
+     *
+     * @param authToken    Auth Token
+     * @param userId       User Id
+     * @param title        New title
+     * @return Object
+     */
+    @RequestLine("PUT /channels/{user}")
+    @Headers({
+        "Authorization: OAuth {token}",
+        "Accept: application/vnd.twitchtv.v5+json"
+    })
+    HystrixCommand<Object> updateTitle(
+        @Param("token") String authToken,
+        @Param("user") String userId,
+        @Param("status") String title
+    );
+
 }
